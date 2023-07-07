@@ -1,0 +1,14 @@
+,,No. of allotted Human Resources (Decision Scientists),,,,Sales revenue in $ '000,,,,Sales revenue per resource $'000/ resource,,,,HR per quarter,Sales rev/ quarter ,Sales rev per resource per quarter
+Name of the Client/Account,Area/Sector,Q1,Q2,Q3,Q4,Q1 ,Q2,Q3 ,Q4,Q1 ,Q2,Q3 ,Q4,,,
+Wilmarth,Retail,10,10,10,10,22,24,22,24,2.2,2.4,2.2,2.4,10,23,2.3
+Cassell Health,Pharma,NA,5,10,10,NA,45,45,45,NA,9,4.5,4.5,8.33,45,6
+Unity Health Group,Insurance,20,20,20,NA,17,19,20,NA,0.85,0.95,1,NA,20,18.67,0.93
+Exponible,Oil and Gas,20,20,20,20,65,75,70,50,3.25,3.75,3.5,2.5,20,65,3.25
+Berger has a way,Insurance,25,25,25,25,41,45,44,40,1.64,1.8,1.76,1.6,25,42.5,1.7
+Costa whole gale,Retail,20,20,20,20,30,20,20,30,1.5,1,1,1.5,20,25,1.25
+Sigma	,Insurance,10,10,10,NA,12,13,15,NA,1.2,1.3,1.5,NA,10,13.33,1.33
+Eighty,Telecom,15,15,15,20,35,41,40,45,2.3,2.7,2.7,2.25,16.25,40.25,2.49
+Microsite,Software,25,25,30,30,43,47,50,50,1.72,1.88,1.67,1.67,27.5,47.5,1.74
+Coronel Health,Pharma,10,10,15,15,17,15,19,25,1.7,1.5,1.3,1.7,12.5,19,1.55
+Sharon,Oil and Gas,10,10,15,20,23,25,30,45,2.3,2.5,2,2.25,13.75,30.75,2.26
+,Average resource per Client,15,15.45,17.27,15.45,27.73,33.54,34.1,39.33,1.86,2.62,2.1,2.26,15.8,33.68,2.21
