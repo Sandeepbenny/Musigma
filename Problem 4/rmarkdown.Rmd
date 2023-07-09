@@ -1,0 +1,117 @@
+---
+title: "SKU Data Analysis"
+author: "Sandeep Benny "
+date: "2023-07-08"
+output:
+  html_document:
+    toc: true
+---
+
+# EDA for SKU Data
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load Libraries
+
+```{r load_libraries}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(forecast)
+```
+
+## Data Loading and Cleaning
+
+```{r load_data}
+# Read the data from CSV file
+data <- read_csv("forecast.csv")
+
+# Check the structure of the data
+str(data)
+
+# Cleanse the data - Remove rows with missing values
+data <- na.omit(data)
+```
+
+## Exploratory Data Analysis (EDA)
+
+### Summary Statistics
+
+```{r summary_stats}
+summary(data)
+```
+
+### Quantity Distribution
+
+```{r quantity_distribution}
+ggplot(data, aes(x = QUANTITY)) +
+  geom_histogram(fill = "lightblue", bins = 20) +
+  labs(x = "Quantity", y = "Frequency") +
+  ggtitle("Distribution of SKU Quantity")
+```
+
+### Time Series Plot
+
+```{r time_series_plot}
+ggplot(data, aes(x = MONTH_YEAR, y = QUANTITY)) +
+  geom_line() +
+  labs(x = "Month-Year", y = "Quantity") +
+  ggtitle("SKU Quantity Over Time")
+```
+
+## Modeling
+
+### Train-Test Split
+
+```{r train_test_split}
+# Split data into training and test sets
+train_data <- data[1:80, ]
+test_data <- data[81:nrow(data), ]
+```
+
+### ARIMA Model
+
+```{r arima_model}
+# Fit ARIMA model
+model <- auto.arima(train_data$QUANTITY)
+
+# Forecast using the ARIMA model
+forecast <- forecast(model, h = nrow(test_data))
+
+# Plot actual vs. forecasted values
+plot(forecast, main = "Actual vs. Forecasted Quantity")
+```
+
+### Evaluation
+
+```{r evaluation}
+# Calculate evaluation metrics
+accuracy(forecast, test_data$QUANTITY)
+```
+
+## Conclusion
+
+Summarize your findings and conclusions based on the EDA and modeling results.
+
+```
+## Conclusion
+
+Based on the exploratory data analysis (EDA) and modeling results, the following conclusions can be drawn:
+
+1. Quantity Distribution: The distribution of SKU quantity exhibits a right-skewed pattern, with most values concentrated towards lower quantities. This suggests that the majority of SKUs have relatively lower sales volume.
+
+2. Time Series Patterns: The time series plot of SKU quantity over time shows some fluctuations but does not exhibit any clear seasonal patterns. However, there seems to be a general increasing trend over the analyzed period.
+
+3. ARIMA Modeling: The ARIMA model was fitted to the training data and used for forecasting SKU quantity in the test period. The actual vs. forecasted plot shows that the model captures the overall trend, but there is room for improvement in capturing the specific fluctuations.
+
+4. Evaluation Metrics: The accuracy metrics calculated for the ARIMA model show the performance of the model in terms of forecasting SKU quantity. The specific evaluation metrics such as Mean Absolute Error (MAE), Mean Absolute Percentage Error (MAPE), and Root Mean Squared Error (RMSE) provide insight into the model's accuracy.
+
+In conclusion, the analysis suggests that the SKU data exhibits a general increasing trend over time, and the ARIMA model provides reasonable forecasts for SKU quantity. However, further refinement of the model or exploration of alternative modeling approaches may enhance the forecasting accuracy.
+
+It is important to note that the conclusions drawn from this analysis are based on the specific dataset and modeling techniques employed. Further analysis and validation may be required to make more accurate and precise conclusions for specific SKUs or business contexts.
+
+
+```
+
